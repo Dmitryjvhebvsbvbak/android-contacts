@@ -42,7 +42,6 @@ fun MessengersBottomSheet(
     }
 }
 
-
 @Composable
 private fun MessengerOption(
     isSelected: Boolean,
