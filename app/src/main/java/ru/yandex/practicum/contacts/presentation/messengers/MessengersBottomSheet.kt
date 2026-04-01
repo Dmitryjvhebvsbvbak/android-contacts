@@ -1,5 +1,6 @@
 package ru.yandex.practicum.contacts.presentation.messengers
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,12 +27,12 @@ fun MessengersBottomSheet(
     onDismiss: () -> Unit
 ) {
     CommonBottomSheet(
-        title=stringResource(R.string.filter_by_messaging_app),
-        items=MessagingApp.entries,
-        selectedItems=selectedApps,
-        onItemsSelected=onAppsSelected,
+        title = stringResource(R.string.filter_by_messaging_app),
+        items = MessagingApp.entries.toList(),
+        selectedItems = selectedApps,
+        onItemsSelected = onAppsSelected,
         onDismiss = onDismiss
-    ){ app , isSelected ->
+    ) { app: MessagingApp, isSelected: Boolean ->
         MessengerOption(
             isSelected = isSelected,
             app = app,
@@ -50,7 +52,7 @@ private fun MessengerOption(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp),           // сделал padding единообразным с CountryCodeOption
         verticalAlignment = Alignment.CenterVertically
     ) {
         Checkbox(
@@ -65,7 +67,12 @@ private fun MessengerOption(
                 onAppsSelected(newSelection)
             }
         )
+
         Spacer(modifier = Modifier.width(16.dp))
-        Text(app.name)
+
+        Text(
+            text = app.name,
+            style = MaterialTheme.typography.bodyLarge   // добавил стиль для лучшего вида
+        )
     }
 }
