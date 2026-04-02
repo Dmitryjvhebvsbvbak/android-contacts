@@ -29,10 +29,10 @@ fun CountryCodeBottomSheet(
     CommonBottomSheet(
         title = stringResource(R.string.filter_by_country_code),
         items = CountryCode.COMMON_CODES,
-        selectedItems = selectedCodes,
+        selectedCodes,
         onItemsSelected = onCodesSelected,
-        onDismiss = onDismiss
-    ){countryCode, isSelected ->
+        onDismiss=onDismiss
+    ) { countryCode, isSelected ->
         CountryCodeOption(
             isSelected = isSelected,
             countryCode = countryCode,

@@ -83,4 +83,6 @@ fun <T> CommonBottomSheet(
             }
         }
     }
-} 
+}
+
+annotation class CommonBottomSheet

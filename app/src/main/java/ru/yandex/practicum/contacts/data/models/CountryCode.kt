@@ -18,4 +18,6 @@ data class CountryCode(
             CountryCode("+55", "Brazil")
         )
     }
-} 
+}
+
+annotation class CountryCode
